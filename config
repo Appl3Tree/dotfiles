@@ -2,11 +2,10 @@
 
 BASE_DIR=$(dirname $0)
 
-if [[ $1 == "install" ]]; then
-    echo "Installing dot configuration files"
-    cp -frv ${BASE_DIR}/.vimrc /home/kali/.vimrc
-    cp -frv ${BASE_DIR}/.zshrc /home/kali/.zshrc
-    chown kali: /home/kali/.vimrc
-    chown kali: /home/kali/.zshrc
-    chmod 644 /home/kali/.vimrc
-    chmod 644 /home/kali/.zshrc
+echo "Installing dot configuration files"
+cp -frv ${BASE_DIR}/.vimrc /home/kali/.vimrc
+cp -frv ${BASE_DIR}/.zshrc /home/kali/.zshrc
+chown kali: /home/kali/.vimrc
+chown kali: /home/kali/.zshrc
+chmod 644 /home/kali/.vimrc
+chmod 644 /home/kali/.zshrc
