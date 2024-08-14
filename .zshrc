@@ -17,13 +17,14 @@ alias spiderfoot="python ~/git_clones/spiderfoot/sf.py"
 alias kali='docker run -u kali -w /home/kali -it --rm -e DISPLAY=docker.for.mac.localhost:0 -p 1337:1337 -p 7777:7777 -p 5900:5900 --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --name kali kali'
 # --mount src=/Users/forrest/.Linux_Files/docker_files/kali/kali-root,dst=/root --mount src=/Users/forrest/.Linux_Files/docker_files/kali/kali-postgres,dst=/var/lib/postgresql
 
-if [[ `uname` != "Linux "]]
+OS=$(uname)
+if [[ $OS != "Linux" ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 function prompt_func() {
     NEWLINE=$'\n'
-    if [[ `uname` != "Linux "]]
+    if [[ $OS != "Linux" ]]; then
         PS1="%B%F{green}┌──[HQ🚀🌐$(ip -4 addr sh dev en0 | grep inet | awk '{print $2}' | cut -d '/' -f1)"
             if [[ $(ip a sh dev utun6 2>/dev/null) ]]; then
                 PS1+="%f%b%F{red}%B⚔️ Attacker:AppleTree📡 IP:$(ip -4 a sh dev utun6 2>/dev/null | grep inet | awk '{print $2}')"
