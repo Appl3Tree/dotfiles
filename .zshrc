@@ -16,6 +16,9 @@ alias ll='ls -alF'
 alias spiderfoot="python ~/git_clones/spiderfoot/sf.py"
 alias kali='docker run -u kali -w /home/kali -it --rm -e DISPLAY=docker.for.mac.localhost:0 -p 1337:1337 -p 7777:7777 -p 5900:5900 --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --name kalilinux/kali-rolling kalilinux/kali-rolling'
 # --mount src=/Users/forrest/.Linux_Files/docker_files/kali/kali-root,dst=/root --mount src=/Users/forrest/.Linux_Files/docker_files/kali/kali-postgres,dst=/var/lib/postgresql
+if [[ -f $(which glow) ]]; then
+    alias cat='glow'
+fi
 
 OS=$(uname)
 if [[ $OS != "Linux" ]]; then
