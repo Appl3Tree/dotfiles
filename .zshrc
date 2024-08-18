@@ -1,5 +1,6 @@
 setopt PROMPT_SUBST
 autoload -U colors && colors
+OS=$(uname)
 # export CLICOLOR=1
 # export LSCOLORS=GxBxCxDxexegedabagaced
 
@@ -10,17 +11,19 @@ parse_git_branch() {
 
 # Exports
 export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}:/usr/local/sbin:/opt/local/bin:/opt/local/sbin"
+if [[ $OS == "Linux" ]]; then
+    export USER=kali
+fi
 
 # Aliases
 alias ll='ls -alF'
 alias spiderfoot="python ~/git_clones/spiderfoot/sf.py"
-alias kali='docker run -u kali -w /home/kali -it --rm -e DISPLAY=docker.for.mac.localhost:0 -p 1337:1337 -p 7777:7777 -p 5900:5900 --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --name kalilinux/kali-rolling kalilinux/kali-rolling'
-# --mount src=/Users/forrest/.Linux_Files/docker_files/kali/kali-root,dst=/root --mount src=/Users/forrest/.Linux_Files/docker_files/kali/kali-postgres,dst=/var/lib/postgresql
+alias kali='docker run -u kali -w /home/kali -it --rm -e DISPLAY=docker.for.mac.localhost:0 -p 1337:1337 -p 7777:7777 -p 25900:5900 --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --name kali kali zsh'
+alias startvnc='tightvncserver :0 -geometry 1280x800 -depth 16 -pixelformat rgb565'
 if [[ -f $(which glow) ]]; then
     alias cat='glow'
 fi
 
-OS=$(uname)
 if [[ $OS != "Linux" ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
 fi
