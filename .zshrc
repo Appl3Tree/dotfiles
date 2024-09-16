@@ -1,5 +1,10 @@
 setopt PROMPT_SUBST
 autoload -U colors && colors
+
+# Bindkeys
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 OS=$(uname)
 VPN=$(ip -4 a sh dev utun6 2>/dev/null | grep inet | awk '{print $2}')
 # export CLICOLOR=1
