@@ -42,12 +42,12 @@ function prompt_func() {
     if [[ $OS != "Linux" ]]; then
         PS1="%B%F{green}┌──[%m🚀🌐$(ip -4 addr sh dev en0 | grep inet | awk '{print $2}' | cut -d '/' -f1)"
             if [[ $(ip a | grep -A1 "utun" | grep "inet " 2>/dev/null) ]]; then
-                PS1+="%f%b%F{red}%B⚔️ Attacker:AppleTree📡 IP:$(ip -4 a sh dev utun5 2>/dev/null | grep inet | awk '{print $2}')"
+                PS1+="%f%b%F{red}%B⚔️ Attacker:AppleTree📡 IP:$(ip -4 a sh dev utun5 2>/dev/null | grep inet | awk '{print $2}' | cut -d '/' -f1)"
             fi
     else
         PS1="%B%F{green}┌──[%m🚀🌐$(ip -4 addr sh dev eth0 | grep inet | awk '{print $2}' | cut -d '/' -f1)"
             if [[ $(ip a sh dev tun0 2>/dev/null) ]]; then
-                PS1+="%f%b%F{red}%B⚔️ Attacker:AppleTree📡 IP:$(ip -4 a sh dev tun0 2>/dev/null | grep inet | awk '{print $2}')"
+                PS1+="%f%b%F{red}%B⚔️ Attacker:AppleTree📡 IP:$(ip -4 a sh dev tun0 2>/dev/null | grep inet | awk '{print $2}' | cut -d '/' -f1)"
             fi
     fi
     PS1+="%f%b🔥%F{green}%B%n]$(parse_git_branch)${NEWLINE}"
