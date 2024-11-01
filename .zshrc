@@ -41,8 +41,8 @@ function prompt_func() {
     NEWLINE=$'\n'
     if [[ $OS != "Linux" ]]; then
         PS1="%B%F{green}┌──[%m🚀🌐$(ip -4 addr sh dev en0 | grep inet | awk '{print $2}' | cut -d '/' -f1)"
-            if [[ $(ip a sh dev utun6 2>/dev/null) ]]; then
-                PS1+="%f%b%F{red}%B⚔️ Attacker:AppleTree📡 IP:$(ip -4 a sh dev utun6 2>/dev/null | grep inet | awk '{print $2}')"
+            if [[ $(ip a | grep -A1 "utun" | grep "inet " 2>/dev/null) ]]; then
+                PS1+="%f%b%F{red}%B⚔️ Attacker:AppleTree📡 IP:$(ip -4 a sh dev utun5 2>/dev/null | grep inet | awk '{print $2}')"
             fi
     else
         PS1="%B%F{green}┌──[%m🚀🌐$(ip -4 addr sh dev eth0 | grep inet | awk '{print $2}' | cut -d '/' -f1)"
@@ -52,7 +52,11 @@ function prompt_func() {
     fi
     PS1+="%f%b🔥%F{green}%B%n]$(parse_git_branch)${NEWLINE}"
     PS1+="└──╼[👾]%F{cyan}%~ %# %f%b"
-    alias kali="docker run -u kali -w /home/kali -it --rm -e DISPLAY=docker.for.mac.localhost:0 -e VPN=$(ip -4 a sh dev utun6 2>/dev/null | grep inet | awk '{print $2}') -p 1337:1337 -p 7777:7777 -p 25900:5900 -v /Users/forrest/OneDrive/HTB:/home/kali/HTB --security-opt seccomp=unconfined --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --name kali kali zsh"
+    alias kali="docker run -u kali -w /home/kali -it --rm -e DISPLAY=docker.for.mac.localhost:0 -e VPN=$(ip -4 a sh dev utun5 2>/dev/null | grep inet | awk '{print $2}') -p 80:80 -p 443:443 -p 1337-1369:1337-1369 -p 25900:5900 -v /Users/forrest/OneDrive/HTB:/home/kali/HTB --security-opt seccomp=unconfined --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --name kali kali zsh"
+    alias nessus="docker run --name 'nessus' -d -p 8834:8834 --rm nessus-live"
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd prompt_func
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.1.3 # run chruby to see actual version
