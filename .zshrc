@@ -29,6 +29,7 @@ alias ll='ls -alF'
 alias spiderfoot="python ~/git_clones/spiderfoot/sf.py"
 alias startvnc='tightvncserver :0 -geometry 1280x800 -depth 16 -pixelformat rgb565'
 alias fix_gui="sudo rm -rf /tmp/.X11-unix/ && ln -s /mnt/wslg/.X11-unix /tmp/"
+alias zaproxy="zaproxy >/dev/null 2&>1 &"
 if [[ -f $(which glow) ]]; then
     alias cat='glow'
 fi
@@ -57,9 +58,9 @@ function prompt_func() {
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd prompt_func
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.1.3 # run chruby to see actual version
+#source /usr/local/opt/chruby/share/chruby/chruby.sh
+#source /usr/local/opt/chruby/share/chruby/auto.sh
+#chruby ruby-3.1.3 # run chruby to see actual version
 export PATH="/usr/local/opt/binutils/bin:$PATH"
 
 # Created by `pipx` on 2025-05-05 01:47:08
