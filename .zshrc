@@ -18,7 +18,10 @@ parse_git_branch() {
 # Exports
 
 # Keg-only brew exports
-export PATH="/usr/local/opt/whois/bin:$PATH"
+if [ -d "/usr/local/Cellar" ]; then
+    export PATH="/usr/local/opt/whois/bin:$PATH"
+    export PATH="/usr/local/Cellar/john-jumbo/1.9.0_1/share/john:$PATH"
+fi
 
 if [[ $OS == "Linux" ]]; then
     export USER=kali
