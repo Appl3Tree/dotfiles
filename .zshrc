@@ -33,9 +33,6 @@ alias spiderfoot="python ~/git_clones/spiderfoot/sf.py"
 alias startvnc='tightvncserver :0 -geometry 1280x800 -depth 16 -pixelformat rgb565'
 alias fix_gui="sudo rm -rf /tmp/.X11-unix/ && ln -s /mnt/wslg/.X11-unix /tmp/"
 alias zaproxy="zaproxy >/dev/null 2&>1 &"
-if [[ -f $(which glow) ]]; then
-    alias cat='glow'
-fi
 
 if [[ $OS != "Linux" ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
