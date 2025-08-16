@@ -65,3 +65,7 @@ export PATH="/usr/local/opt/binutils/bin:$PATH"
 
 # Created by `pipx` on 2025-05-05 01:47:08
 export PATH="$PATH:/Users/forrest/.local/bin"
+
+# AKB Explorer
+export PATH="$PATH:/home/forrest/repos/akb-explorer/"
+export akb_config="/home/forrest/repos/akb-explorer/"
