@@ -53,7 +53,7 @@ function prompt_func() {
     fi
     PS1+="%f%b🔥%F{green}%B%n]$(parse_git_branch)${NEWLINE}"
     PS1+="└──╼[👾]%F{cyan}%~ %# %f%b"
-    alias kali="docker run -u kali -w /home/kali -it --rm -e DISPLAY=docker.for.mac.localhost:0 -e VPN=$(ip -4 a sh dev utun6 2>/dev/null | grep inet | awk '{print $2}') -p 80:80 -p 443:443 -p 1337-1369:1337-1369 -p 11601:11601 -p 25900:5900 --security-opt seccomp=unconfined --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --name kali kali zsh"
+    alias kali="docker run -u kali -w /home/kali -it --rm -e DISPLAY=docker.for.mac.localhost:0 -e VPN=$(ip -4 a sh | grep -A 2 tun | grep inet | awk '{print $2}' | cut -d '/' -f1 | tail -1) -p 80:80 -p 443:443 -p 1337-1369:1337-1369 -p 11601:11601 -p 25900:5900 --security-opt seccomp=unconfined --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --name kali kali zsh"
     alias nessus="docker run --name 'nessus' -d -p 8834:8834 --rm nessus-live"
 }
 autoload -Uz add-zsh-hook
