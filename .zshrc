@@ -20,6 +20,7 @@ parse_git_branch() {
 # Keg-only brew exports
 if [ -d "/usr/local/Cellar" ]; then
     export PATH="/usr/local/opt/whois/bin:$PATH"
+    export PATH="/usr/local/opt/ruby/bin:$PATH"
     export PATH="/usr/local/Cellar/john-jumbo/1.9.0_1/share/john:$PATH"
 fi
 
