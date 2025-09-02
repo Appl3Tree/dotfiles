@@ -56,6 +56,7 @@
                 "capture_5xx":true
             },
             "by_tool":{
+                "capture_burp_ai":true,
                 "capture_extender":true,
                 "capture_intruder":true,
                 "capture_proxy":true,
@@ -126,6 +127,7 @@
                 "show_5xx":true
             },
             "by_tool":{
+                "show_burp_ai":true,
                 "show_extender":true,
                 "show_intruder":true,
                 "show_proxy":true,
@@ -175,6 +177,12 @@
                 "show_only_in_scope_items":false,
                 "show_only_parameterized_requests":false
             },
+            "by_search":{
+                "case_sensitive":false,
+                "negative_search":false,
+                "regex":false,
+                "term":""
+            },
             "by_status_code":{
                 "show_2xx":true,
                 "show_3xx":true,
@@ -182,6 +190,7 @@
                 "show_5xx":true
             },
             "by_tool":{
+                "burp_ai":true,
                 "extensions":true,
                 "intruder":true,
                 "logger":true,
@@ -201,6 +210,10 @@
         }
     },
     "project_options":{
+        "ai":{
+            "enabled":true,
+            "use_user_options":true
+        },
         "connections":{
             "out_of_scope_requests":{
                 "advanced_mode":false,
@@ -266,6 +279,13 @@
             }
         },
         "misc":{
+            "collaborator_server":{
+                "location":"",
+                "poll_over_unencrypted_http":false,
+                "polling_location":"",
+                "type":"default",
+                "use_user_config":true
+            },
             "embedded_browser":{
                 "allow_running_without_sandbox":false,
                 "disable_gpu":false
@@ -289,10 +309,14 @@
                     "scanner":"",
                     "sequencer":""
                 }
+            },
+            "scheduled_tasks":{
+                "tasks":[]
             }
         },
         "sessions":{
             "cookie_jar":{
+                "monitor_burp_ai":false,
                 "monitor_extender":false,
                 "monitor_intruder":false,
                 "monitor_proxy":true,
@@ -594,6 +618,20 @@
                 "listen_mode":"specific_address",
                 "listen_specific_address":"0:0:0:0:0:0:0:1%lo",
                 "listener_port":8080,
+                "running":false,
+                "use_custom_tls_protocols":false
+            },
+            {
+                "certificate_mode":"per_host",
+                "custom_tls_protocols":[
+                    "TLSv1",
+                    "TLSv1.1",
+                    "TLSv1.2",
+                    "TLSv1.3"
+                ],
+                "enable_http2":true,
+                "listen_mode":"loopback_only",
+                "listener_port":8080,
                 "running":true,
                 "use_custom_tls_protocols":false
             }
@@ -601,13 +639,13 @@
         "response_modification":{
             "convert_https_links_to_http":false,
             "enable_disabled_form_fields":false,
-            "highlight_unhidden_fields":false,
+            "highlight_unhidden_fields":true,
             "remove_all_javascript":false,
             "remove_input_field_length_limits":false,
             "remove_javascript_form_validation":false,
             "remove_object_tags":false,
             "remove_secure_flag_from_cookies":false,
-            "unhide_hidden_form_fields":false
+            "unhide_hidden_form_fields":true
         },
         "ssl_pass_through":{
             "apply_to_out_of_scope_items":true,
