@@ -22,6 +22,12 @@ if [ -d "/usr/local/Cellar" ]; then
     export PATH="/usr/local/opt/whois/bin:$PATH"
     export PATH="/usr/local/opt/ruby/bin:$PATH"
     export PATH="/usr/local/Cellar/john-jumbo/1.9.0_1/share/john:$PATH"
+    export PATH="/usr/local/Cellar/proxychains-ng/4.17/bin:$PATH"
+fi
+
+# Go-only exports
+if [ -d "$HOME/go/bin/" ]; then
+    export PATH="$HOME/go/bin:$PATH"
 fi
 
 if [[ $OS == "Linux" ]]; then
