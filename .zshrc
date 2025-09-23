@@ -76,3 +76,8 @@ export PATH="$PATH:/Users/forrest/.local/bin"
 # AKB Explorer
 export PATH="$PATH:/home/forrest/repos/akb-explorer/"
 export akb_config="/home/forrest/repos/akb-explorer/"
+
+# Python venv sourcing
+if [ -f "$HOME/.venv/bin/activate" ]; then
+    source "$HOME/.venv/bin/activate" > /dev/null 2>&1
+fi
