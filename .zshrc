@@ -1,4 +1,6 @@
 setopt PROMPT_SUBST
+setopt interactivecomments
+setopt nonomatch
 autoload -U colors && colors
 
 # Bindkeys
@@ -81,3 +83,6 @@ export akb_config="/home/forrest/repos/akb-explorer/"
 if [ -f "$HOME/.venv/bin/activate" ]; then
     source "$HOME/.venv/bin/activate" > /dev/null 2>&1
 fi
+
+# Created by `pipx` on 2025-11-15 17:18:52
+export PATH="$PATH:/home/forrest/.local/bin"
